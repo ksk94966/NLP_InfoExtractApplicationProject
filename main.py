@@ -1,7 +1,9 @@
 import nltk
 import codecs
 import os
+from nltk.tokenize import word_tokenize, sent_tokenize 
 from nltk.stem import WordNetLemmatizer
+from nltk.corpus import wordnet as wn
 wordnet_lemmatizer = WordNetLemmatizer()
 
 doc = codecs.open("WikipediaArticles/AbrahamLincoln.txt", 'r', 'utf-8')
@@ -19,7 +21,7 @@ print('Total Sentences : ',len(sent))
 sent_wordsAll = []
 k = 0
 for i in sent:
-    sent_wordsAll.extend(nltk.word_tokenize(i))
+   sent_wordsAll.extend(nltk.word_tokenize(i))
 
 print('Total Words : ',len(sent_wordsAll))
 
@@ -31,13 +33,45 @@ print('Total Words : ',len(sent_wordsAll))
 
 # print(len(sent_wordsAll))
 
+#lemmatizing the words
+
 word_lemm = dict()
+word_lemma_list = []
 #print("{0:20}{1:20}".format("Word","Lemma"))
 for word in sent_wordsAll:
     word_lemm[word] = wordnet_lemmatizer.lemmatize(word)
+    #word_lemma_list.extend(wordnet_lemmatizer.lemmatize(word))
+    #print(word,word_lemm[word])
     #print ("{0:20}{1:20}".format(word,wordnet_lemmatizer.lemmatize(word)))
 
 print('lemmacount : ',len(word_lemm))
+
+#print(len(word_lemma_list))
+
+#pos tagging the words with respect to each sentence
+word_tag = dict()    
+for s in sent:
+    tokenized = sent_tokenize(s)              #Transforming the sentence into one array with quotations
+    for i in tokenized: 
+        wordsList = nltk.word_tokenize(i)  
+        word_tag[s] = nltk.pos_tag(wordsList)  
+
+print(len(word_tag))
+
+#print(word_tag)
+
+hypernyms_dict = dict()
+for word in sent_wordsAll:
+    extracted_syns = wn.synsets(word)
+    hypernyms_dict[word] = extracted_syns.hypernyms()
+
+print(len(hypernyms_dict))
+
+
+
+
+
+
 
 
 
