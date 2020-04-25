@@ -61,11 +61,22 @@ print(len(word_tag))
 #print(word_tag)
 
 hypernyms_dict = dict()
+hyponyms_dict = dict()
+meronyms_dict = dict()
+holonyms_dict = dict()
 for word in sent_wordsAll:
     extracted_syns = wn.synsets(word)
-    hypernyms_dict[word] = extracted_syns.hypernyms()
+    #print(extracted_syns)
+    if(len(extracted_syns)!=0):
+        hypernyms_dict[word] = extracted_syns[0].hypernyms()
+        hyponyms_dict[word] = extracted_syns[0].hyponyms()
+        meronyms_dict[word]  = extracted_syns[0].part_meronyms()
+        holonyms_dict[word]  = extracted_syns[0].part_holonyms()
 
 print(len(hypernyms_dict))
+print(len(hyponyms_dict))
+print(len(meronyms_dict))
+print(len(holonyms_dict))
 
 
 
