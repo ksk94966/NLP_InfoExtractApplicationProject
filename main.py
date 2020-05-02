@@ -75,6 +75,8 @@ def sent_wordnetFeatures(s):
     print(hypernyms_dict)
 
 def sent_parsing(s):
+    print("Dependency Parsing")
+    print('\n')
     parse_sent = nlp(s)
     for tok in parse_sent:
         print(tok.text,"----->",tok.dep_,"----->",tok.pos_,)
@@ -93,11 +95,22 @@ if __name__ == '__main__':
 
     print('Total Sentences After splitting the document: ',len(sent))
     
+    print('\n----------\n')
+
     print('Extracting features for each of the sentence and shown below:')
 
+    print('\n')
     for s in sent:
+        print(s)
+        print('\n----------\n')
         sent_wordtokenization(s)
+        print('\n')
         sent_wordlemmatization(s)
+        print('\n')
         sent_postagging(s)
+        print('\n')
         sent_wordnetFeatures(s)
+        print('\n')
         sent_parsing(s)
+        print('\n----------\n')
+        print('\n--Extracting for next sentence--\n')
