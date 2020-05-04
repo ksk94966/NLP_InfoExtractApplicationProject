@@ -85,13 +85,20 @@ def sent_parsing(s):
 
 if __name__ == '__main__':
 	#print("Enter your input sentence:")
-    doc = codecs.open("WikipediaArticles/sample.txt", 'r', 'utf-8')
-    content = doc.read()
+    content = None
+    try:
+        f = open("WikipediaArticles/sample.txt", "r")
+        content = f.read()
+    except UnicodeDecodeError:
+        f = open("WikipediaArticles/sample.txt", "r", encoding = 'utf8')
+
 
     #Extacting the sentences from the text document
-    sent = []
-    tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
-    sent.extend(tokenizer.tokenize(content))      #sent[0] contains all the sentences
+    # sent = []
+    # tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
+    # sent.extend(tokenizer.tokenize(content))      #sent[0] contains all the sentences
+
+    sent = nltk.sent_tokenize(content)
 
     print('Total Sentences After splitting the document: ',len(sent))
     
