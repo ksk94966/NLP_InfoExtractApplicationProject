@@ -2,6 +2,8 @@ import nltk
 import codecs
 import os
 import spacy
+from spacy import displacy
+from IPython.core.display import display, HTML
 nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger')
@@ -68,20 +70,27 @@ def sent_wordnetFeatures(s):
     print("Extracted Wordnet Features of the sentence provided")
     print("----------Hypernyms-----------")
     print(hypernyms_dict)
+    print('\n\n')
     print("----------Hyponyms-----------")
     print(hypernyms_dict)
+    print('\n\n')
     print("----------Meronyms-----------")
     print(hypernyms_dict)
+    print('\n\n')
     print("----------Holonyms-----------")
     print(hypernyms_dict)
 
+#Dependency Parsing
 def sent_parsing(s):
     print("Dependency Parsing")
     print('\n')
     parse_sent = nlp(s)
     for tok in parse_sent:
         print(tok.text,"----->",tok.dep_,"----->",tok.pos_,)
-
+    print('\n\n')
+    display(parse_sent)
+    html = displacy.render(parse_sent, style="dep")
+    display(HTML(html))
 
 
 if __name__ == '__main__':
@@ -92,14 +101,16 @@ if __name__ == '__main__':
         content = f.read()
     except UnicodeDecodeError:
         f = open("WikipediaArticles/sample.txt", "r", encoding = 'utf8')
-
+        content = f.read()
 
     #Extacting the sentences from the text document
     # sent = []
     # tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
     # sent.extend(tokenizer.tokenize(content))      #sent[0] contains all the sentences
 
-    sent = nltk.sent_tokenize(content)
+    sent = []
+    tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
+    sent.extend(tokenizer.tokenize(content))
 
     print('Total Sentences After splitting the document: ',len(sent))
     
