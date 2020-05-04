@@ -2,13 +2,14 @@ import nltk
 import codecs
 import os
 import spacy
+nltk.download('punkt')
+nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger')
 nlp = spacy.load("en_core_web_sm")
 from nltk.tokenize import word_tokenize, sent_tokenize 
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import wordnet as wn
 wordnet_lemmatizer = WordNetLemmatizer()
-
 
 
 #word tokenization from the sentences
