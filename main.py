@@ -116,10 +116,11 @@ if __name__ == '__main__':
     
     print('\n----------\n')
 
-    print('Extracting features for each of the sentence and shown below:')
+    print('Extracting features for each of the sentences and shown below:')
 
     print('\n')
     for s in sent:
+        print('\n--Extracting for the sentence--\n')
         print(s)
         print('\n----------\n')
         sent_wordtokenization(s)
@@ -132,4 +133,4 @@ if __name__ == '__main__':
         print('\n')
         sent_parsing(s)
         print('\n----------\n')
-        print('\n--Extracting for next sentence--\n')
+        
