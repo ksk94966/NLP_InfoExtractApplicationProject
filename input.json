@@ -1,0 +1,51 @@
+{
+    "document": "/input.txt",
+    "extraction": [
+        {
+            "template": "PART",
+            "sentences": [
+                "Dallas,TX is in United States."
+            ],
+            "arguments": {
+                "1": "Dallas",
+                "2": "United States"
+            }
+        },
+        {
+            "template": "PART",
+            "sentences": [
+                "Amazon was founded by Jeff Bezos in Bellevue, Washington, in July 1994."
+            ],
+            "arguments": {
+                "1": "Bellevue",
+                "2": "Washington"
+            }
+        },
+        {
+            "template": "BUY",
+            "sentences": [
+                "Farmer bought  1 apple , 2 oranges and  3 bananas for US$ 20."
+            ],
+            "arguments": {
+                "1": " Farmer",
+                "2": " apple, bananas",
+                "3": "20",
+                "4": "1,2,3",
+                "5": ""
+            }
+        },
+        {
+            "template": "BUY",
+            "sentences": [
+                "Travelers Group acquired all Citicorp shares for $70 billion in stock, issuing 2.5 new Citigroup shares for each Citicorp share."
+            ],
+            "arguments": {
+                "1": " Travelers Group",
+                "2": " Citicorp shares",
+                "3": "$70billion",
+                "4": "",
+                "5": ""
+            }
+        }
+    ]
+}
